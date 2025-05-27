@@ -1,10 +1,9 @@
 
 
-````markdown
 # 🎧 Flutter Ses Yöneticisi (Audio Manager)
 
-[![Pub Versiyonu](https://img.shields.io/pub/v/audio_manager.svg)](https://pub.dev/packages/audio_manager)
-[![Lisans](https://img.shields.io/badge/Lisans-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Pub Version](https://img.shields.io/pub/v/audio_manager.svg)](https://pub.dev/packages/audio_manager)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Flutter uygulamaları için kapsamlı ve kullanıcı dostu bir ses yönetim çözümüdür. Arka planda ses çalma, **ducking** (diğer uygulamalar ses çaldığında sesin otomatik olarak azaltılması) ve **kalıcı kullanıcı tercihleri** gibi özellikler sunar.
 
