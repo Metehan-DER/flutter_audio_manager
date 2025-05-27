@@ -1,94 +1,163 @@
 
-# Türkçe Versiyon
 
-```markdown
-# Flutter için Ses Yöneticisi
+````markdown
+# 🎧 Flutter Ses Yöneticisi (Audio Manager)
 
-[![pub paket](https://img.shields.io/pub/v/audio_manager.svg)](https://pub.dev/packages/audio_manager)
-[![lisans](https://img.shields.io/badge/lisans-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Pub Versiyonu](https://img.shields.io/pub/v/audio_manager.svg)](https://pub.dev/packages/audio_manager)
+[![Lisans](https://img.shields.io/badge/Lisans-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Flutter uygulamaları için kapsamlı bir ses yönetim çözümü, arka planda ses çalma özelliği ve uygun ses oturum yönetimi sunar.
+Flutter uygulamaları için kapsamlı ve kullanıcı dostu bir ses yönetim çözümüdür. Arka planda ses çalma, **ducking** (diğer uygulamalar ses çaldığında sesin otomatik olarak azaltılması) ve **kalıcı kullanıcı tercihleri** gibi özellikler sunar.
 
-## Özellikler
+---
+
+## 🚀 Özellikler
 
 - 🎵 Arka planda ses çalma
-- 🔊 Ses kısma (diğer uygulamalar ses çalarken otomatik alçaltma)
-- ⏯️ Oynat, duraklat, durdur kontrolleri
-- 🔉 Ses seviyesi ayarı ve kademeli değiştirme
-- 🔄 Çoklu ses ön ayarları
+- 🔊 Diğer uygulamalar ses çaldığında sesi otomatik düşürme (ducking)
+- ⏯️ Oynat / Duraklat / Durdur kontrolleri
+- 🔉 Anlık veya kademeli ses seviyesi ayarı
+- 🔄 Hazır ses ön ayarları (örneğin: yağmur, orman, beyaz gürültü)
 - 📱 Android ve iOS desteği
-- 🔄 SharedPreferences ile kalıcı ayarlar
-- 🎚️ Ses oturum yönetimi
+- 💾 Kalıcı ayarlar için `SharedPreferences` entegrasyonu
+- 🎚️ `AudioSession` ile gelişmiş ses oturum yönetimi
 
-## Kurulum
+---
 
-`pubspec.yaml` dosyanıza ekleyin:
+## 📦 Kurulum
 
-```yaml
-dependencies:
-  just_audio: ^0.10.3
-  audio_session: ^0.2.2
-  shared_preferences: ^2.5.3
-
-# English Version
-
-# Audio Manager for Flutter
-
-[![pub package](https://img.shields.io/pub/v/audio_manager.svg)](https://pub.dev/packages/audio_manager)
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-
-A comprehensive audio management solution for Flutter applications, providing background audio playback with proper audio session management and ducking support.
-
-## Features
-
-- 🎵 Background audio playback
-- 🔊 Audio ducking (lowers volume when other apps play sound)
-- ⏯️ Play, pause, stop controls
-- 🔉 Volume adjustment and fading
-- 🔄 Multiple sound presets
-- 📱 Works on both Android and iOS
-- 🔄 Persistent settings with SharedPreferences
-- 🎚️ Audio session management
-
-## Installation
-
-Add to your `pubspec.yaml`:
+`pubspec.yaml` dosyanıza aşağıdaki bağımlılıkları ekleyin:
 
 ```yaml
 dependencies:
   just_audio: ^0.10.3
   audio_session: ^0.2.2
-  shared_preferences: ^2.5.3
+  shared_preferences: ^2.0.15
+````
 
-## Usage
+---
+
+## 🛠️ Kullanım
+
+```dart
+// Başlat
+await AudioManager.instance.initialize();
+
+// Ses seç ve çal
+await AudioManager.instance.selectSound('rain');
+await AudioManager.instance.play();
+
+// Sesi değiştir
+await AudioManager.instance.setVolume(0.8);
+
+// Kademeli ses azalt
+await AudioManager.instance.fadeVolume(0.3, Duration(seconds: 2));
+
+// Duraklat / Devam ettir
+await AudioManager.instance.pause();
+await AudioManager.instance.resume();
+
+// Durdur
+await AudioManager.instance.stop();
+```
+
+---
+
+## ⚙️ Başlatma (main.dart)
+
+```dart
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AudioManager.instance.initialize();
+  runApp(MyApp());
+}
+```
+
+---
+
+## 📄 Lisans
+
+Bu proje [MIT Lisansı](https://opensource.org/licenses/MIT) ile lisanslanmıştır.
+
+---
+
+---
+
+# 🎧 Audio Manager for Flutter
+
+[![Pub Version](https://img.shields.io/pub/v/audio_manager.svg)](https://pub.dev/packages/audio_manager)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+A powerful and user-friendly audio management solution for Flutter applications. It provides background audio playback, ducking support when other apps play audio, and persistent user preferences.
+
+---
+
+## 🚀 Features
+
+* 🎵 Background audio playback
+* 🔊 Automatic volume ducking when other apps play audio
+* ⏯️ Play / Pause / Stop controls
+* 🔉 Volume control with optional fading
+* 🔄 Built-in sound presets (e.g., rain, forest, white noise)
+* 📱 Cross-platform support (Android & iOS)
+* 💾 Persistent preferences via `SharedPreferences`
+* 🎚️ Smart session management with `audio_session`
+
+---
+
+## 📦 Installation
+
+Add the following to your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  just_audio: ^0.10.3
+  audio_session: ^0.2.2
+  shared_preferences: ^2.0.15
+```
+
+---
+
+## 🛠️ Usage
+
+```dart
 // Initialize
 await AudioManager.instance.initialize();
 
-// Play sound
+// Select and play a sound
 await AudioManager.instance.selectSound('rain');
 await AudioManager.instance.play();
 
 // Adjust volume
 await AudioManager.instance.setVolume(0.8);
 
-// Fade volume
+// Fade volume smoothly
 await AudioManager.instance.fadeVolume(0.3, Duration(seconds: 2));
 
-// Pause/Resume
+// Pause and resume
 await AudioManager.instance.pause();
 await AudioManager.instance.resume();
 
-// Stop
+// Stop playback
 await AudioManager.instance.stop();
+```
 
-## Configuration
+---
 
+## ⚙️ Entry Point (main.dart)
+
+```dart
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AudioManager.instance.initialize();
   runApp(MyApp());
 }
+```
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+```
 
