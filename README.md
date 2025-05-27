@@ -26,10 +26,9 @@ Flutter uygulamaları için kapsamlı bir ses yönetim çözümü, arka planda s
 
 ```yaml
 dependencies:
-  audio_manager: ^1.0.0
-  just_audio: ^0.9.34
-  audio_session: ^0.1.16
-  shared_preferences: ^2.0.15
+  just_audio: ^0.10.3
+  audio_session: ^0.2.2
+  shared_preferences: ^2.5.3
 
 # English Version
 
@@ -57,10 +56,9 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  audio_manager: ^1.0.0
-  just_audio: ^0.9.34
-  audio_session: ^0.1.16
-  shared_preferences: ^2.0.15
+  just_audio: ^0.10.3
+  audio_session: ^0.2.2
+  shared_preferences: ^2.5.3
 
 ## Usage
 // Initialize
